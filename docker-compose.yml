@@ -1,0 +1,6 @@
+mongodb:
+  image: mongo:3.2
+  command: 'mongod'
+  ports:
+    - '27017:27017'
+    - '28017:28017'
