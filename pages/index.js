@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 import Button from 'material-ui/Button'
+import Map from './components/Map'
 
 export default class Index extends React.Component {
   static async getInitialProps () {
@@ -14,11 +15,7 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        {users.map(user => {
-          return <p>{user.title}</p>
-        })}
-        <Button>Hiya</Button>
-        <p>Hello world</p>
+        <Map />
       </div>
     )
   }
