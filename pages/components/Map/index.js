@@ -1,5 +1,6 @@
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import mapStyle from "./style.json";
 
 const Map = compose(
   withProps({
@@ -13,7 +14,8 @@ const Map = compose(
 )(props =>
   <GoogleMap
     defaultZoom={2}
-    defaultCenter={{ lat: 0, lng: 0 }}>
+    defaultCenter={{ lat: 0, lng: 0 }}
+    defaultOptions={{ styles: mapStyle }}>
     {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
   </GoogleMap>
 )
