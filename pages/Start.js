@@ -12,6 +12,7 @@ export default class Start extends React.Component {
 
     return (
       <div style={rootStyle}>
+        <img style={styles.logo} src="/static/beengyang.png"/>
         <h1 style={styles.title}>AirB2B</h1>
         <TextField
           id="search"
@@ -33,7 +34,12 @@ export default class Start extends React.Component {
 }
 
 const styles = {
+  logo: {
+    width: '200px',
+    height: '200px',
+  },
   title: {
+    marginTop: '0',
     fontFamily: 'Lato',
     color: '#283593',
     fontWeight: 'bold'
