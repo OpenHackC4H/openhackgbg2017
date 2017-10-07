@@ -1,20 +1,19 @@
-import React from 'react';
-import Button from 'material-ui/Button';
-import TextField from 'material-ui/TextField';
+import React from 'react'
+import Button from 'material-ui/Button'
+import TextField from 'material-ui/TextField'
 import fetch from 'isomorphic-unfetch'
+import MultipleSelect from './select'
 import Dialog, {
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from 'material-ui/Dialog';
+} from 'material-ui/Dialog'
 
 export default class FormDialog extends React.Component {
   state = {
     open: false,
-    user: {
-
-    }
+    user: {}
   };
 
   handleClickOpen = () => {
@@ -41,7 +40,7 @@ export default class FormDialog extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ user }),
+      body: JSON.stringify(user),
       mode: 'cors',
     })
     .then(response => {
@@ -51,7 +50,6 @@ export default class FormDialog extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <Button onClick={this.handleClickOpen}>Open form dialog</Button>
@@ -83,11 +81,78 @@ export default class FormDialog extends React.Component {
             <TextField
               autoFocus
               margin="dense"
-              id="name"
+              id="city"
               label="city"
               type="text"
               fullWidth
               onChange={this.onTextFieldChange.bind(this, "city")}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="seniority"
+              label="seniority"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "seniority")}
+            />
+            <MultipleSelect
+              autoFocus
+              margin="dense"
+              id="seniority"
+              label="seniority"
+              type="text"
+              fullWidth
+              value={[
+                "0 to 1 year",
+                "2 to 5 years",
+                "more than 5 years"
+              ]}
+            />
+            <MultipleSelect
+              autoFocus
+              margin="dense"
+              id="companySize"
+              label="companySize"
+              type="text"
+              fullWidth
+              value={[
+                "Less than 5 people",
+                "5 to 50 peoples",
+                "50 to 500 peoples",
+                "more than 500 peoples"
+              ]}
+            />
+            <TextField
+              autoFocus
+              multiline
+              margin="dense"
+              rows="4"
+              id="jobDescription"
+              label="jobDescription"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "jobDescription")}
+            />
+            <TextField
+              autoFocus
+              multiline
+              margin="dense"
+              rows="5"
+              id="workplaceDescription"
+              label="workplaceDescription"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "workplaceDescription")}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="languages"
+              label="languages"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "languages")}
             />
           </DialogContent>
           <DialogActions>
