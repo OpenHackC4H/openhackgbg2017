@@ -17,6 +17,7 @@ import Chip from 'material-ui/Chip'
 
 const styles = theme => ({
   root: {
+    alignSelf: 'center',
     padding: '10px',
   },
   card: {
@@ -35,7 +36,7 @@ const styles = theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: '#283593',
   },
   flexGrow: {
     flex: '1 1 auto',
@@ -66,7 +67,7 @@ class User extends React.Component {
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                R
+                {this.props.title[0]}
               </Avatar>
             }
             title={this.props.title}

@@ -26,7 +26,7 @@ export default class Index extends React.Component {
     if (!city) {
       this.setState({ selectedUsers: [], city })
     }
-    const { users } = this.state
+    const { users } = this.props
     const selectedUsers = users.filter(user => {
       return user.city.toLowerCase() === city.toLowerCase()
     })
@@ -44,14 +44,7 @@ export default class Index extends React.Component {
     this.setState({
       filteredUsers: users.filter(user => {
         return user.title.indexOf(value) !== -1
-      }),
-      selectedUsers: users
-        .filter(user => {
-          return user.city.toLowerCase() === city.toLowerCase()
-        })
-        .filter(user => {
-          return user.title.indexOf(value) !== -1
-        })
+      })
     })
   }
 
