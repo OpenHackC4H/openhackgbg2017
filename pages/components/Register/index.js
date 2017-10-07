@@ -103,7 +103,7 @@ export default class FormDialog extends React.Component {
               label="seniority"
               type="text"
               fullWidth
-              value={[
+              values={[
                 "0 to 1 year",
                 "2 to 5 years",
                 "more than 5 years"
@@ -116,7 +116,7 @@ export default class FormDialog extends React.Component {
               label="companySize"
               type="text"
               fullWidth
-              value={[
+              values={[
                 "Less than 5 people",
                 "5 to 50 peoples",
                 "50 to 500 peoples",

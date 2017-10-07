@@ -16,6 +16,7 @@ export default class Start extends React.Component {
           margin="normal"
         />
         <Grid users={selectedUsers} />
+        <FormDialog />
       </div>
     )
   }

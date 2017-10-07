@@ -27,8 +27,7 @@ function Grid(props) {
   return (
     <div className={classes.container}>
       <GridList cellHeight={180} className={classes.gridList}>
-        
-        {users.map((user, i) => <User key={`User_${i}`}{...user} />)}
+        {users && users.map((user, i) => <User key={`User_${i}`}{...user} />)}
       </GridList>
     </div>
   );
