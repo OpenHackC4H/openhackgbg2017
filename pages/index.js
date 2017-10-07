@@ -5,11 +5,12 @@ import Start from './Start'
 import Button from 'material-ui/Button'
 import Map from './components/Map'
 
-
 export default class Index extends React.Component {
   static async getInitialProps () {
+    console.log('getInitialProps')
     const response = await fetch('http://localhost:4000/users')
     const json = await response.json()
+    console.log('json', json)
 
     return { users: json.data }
   }
@@ -23,7 +24,7 @@ export default class Index extends React.Component {
           <Start />
         </div>
         <div style={styles.mapContainer}>
-          <Map>
+          <Map markers={users ? users : []}>
           </Map>
         </div>
         <style jsx global>{`
@@ -36,9 +37,6 @@ export default class Index extends React.Component {
 
 const styles = {
   pageContainer: {
-    position: 'relative',
-    width: '100vw',
-    height: '100vh'
   },
   mapContainer: {
     position: 'absolute',
