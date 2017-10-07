@@ -83,7 +83,7 @@ class User extends React.Component {
             <Typography component="p">
               <strong>Company size:</strong> {this.props.companySize}
               <br />
-              <strong>Interested in:</strong> {this.props.interestedIn.join(', ')}
+              <strong>Interested in:</strong> {this.props.interestedIn && this.props.interestedIn.join(', ')}
             </Typography>
             <div className={classes.chipWrapper}>
               {this.props.keywords.map(keyword =>

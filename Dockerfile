@@ -14,6 +14,7 @@ RUN npm install
 COPY ./lib /app/lib
 COPY ./pages /app/pages
 COPY ./static /app/static
+COPY ./next.config.js /app/
 
 ENTRYPOINT ["dumb-init"]
 

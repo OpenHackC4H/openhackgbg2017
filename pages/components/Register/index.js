@@ -35,7 +35,7 @@ export default class FormDialog extends React.Component {
   addUser = () => {
     const { onRegister } = this.props
     const { user } = this.state
-    fetch('http://localhost:4000/users', {
+    fetch(`${process.env.API_URL}/users`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

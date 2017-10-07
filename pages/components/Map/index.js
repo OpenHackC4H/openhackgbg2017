@@ -49,7 +49,7 @@ class MapComponent extends React.PureComponent {
       lng = marker.latLng.lng()
     }
 
-    return fetch('http://localhost:4000/reverse-geocode', {
+    return fetch(`${process.env.API_URL}/reverse-geocode`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

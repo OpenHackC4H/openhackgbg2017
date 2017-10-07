@@ -19,7 +19,7 @@ export default class Index extends React.Component {
   }
 
   static async getInitialProps () {
-    const response = await fetch('http://localhost:4000/users')
+    const response = await fetch(`${process.env.API_URL}/users`)
     const json = await response.json()
 
     return { users: json.data }
@@ -53,7 +53,7 @@ export default class Index extends React.Component {
 
   onRegister(user) {
     this.setState({ matching: true, selectedUsers: [] })
-    fetch(`http://localhost:4000/user/matches/${user._id}`)
+    fetch(`${process.env.API_URL}/user/matches/${user._id}`)
       .then(response => response.json())
       .then(json => {
         setTimeout(() => {
