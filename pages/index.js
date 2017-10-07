@@ -4,6 +4,7 @@ import Start from './Start'
 
 import Button from 'material-ui/Button'
 import Map from './components/Map'
+import Spinner from './components/Spinner'
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -11,7 +12,9 @@ export default class Index extends React.Component {
     this.state = {
       filteredUsers: props.users,
       selectedUsers: [props.users[0], props.users[1], props.users[2], props.users[3]],
-      city: 'Stockholm'
+      city: 'Stockholm',
+      matching: false,
+      matches: []
     }
   }
 
@@ -49,15 +52,29 @@ export default class Index extends React.Component {
   }
 
   onRegister(user) {
-
+    this.setState({ matching: true, selectedUsers: [] })
+    fetch(`http://localhost:4000/user/matches/${user._id}`)
+      .then(response => response.json())
+      .then(json => {
+        setTimeout(() => {
+          this.setState({
+            city: user.interestedIn[0],
+            matching: false,
+            selectedUsers: json.matches
+          })
+        }, 2500)
+      })
   }
 
   render () {
     const { users } = this.props
-    const { selectedUsers, filteredUsers, city } = this.state
+    const { selectedUsers, filteredUsers, city, matching } = this.state
 
     return (
       <div>
+        {matching ?
+          <Spinner />
+        :
         <div style={styles.pageContainer}>
           <Start
             city={city}
@@ -67,6 +84,7 @@ export default class Index extends React.Component {
             selectedUsers={selectedUsers}
           />
         </div>
+        }
         <div style={styles.mapContainer}>
           <Map
             onSelectCity={this.onSelectCity.bind(this)}
@@ -76,6 +94,14 @@ export default class Index extends React.Component {
         <style jsx global>{`
           @import url('https://fonts.googleapis.com/css?family=Lato');
           * { box-sizing: border-box; margin: 0; padding: 0 }
+          @keyframes spin {
+            from {
+              transform:rotate(0deg);
+            }
+            to {
+              transform:rotate(360deg);
+            }
+          }
         `}</style>
       </div>
     )
