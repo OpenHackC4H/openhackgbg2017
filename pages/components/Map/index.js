@@ -24,16 +24,11 @@ const Map = compose(
       maxZoom={5}
       averageCenter
       enableRetinaIcons
-      defaultImagePath="/static/beengyang.png"
-      imagePath="/static/beengyang.png"
       gridSize={60}>
       {props.users.map(user => (
         <Marker
           onClick={props.handleMarkerClick}
           key={user._id}
-          icon={{
-            url: "/static/beengyang.png"
-          }}
           position={{ lat: user.position.latitude, lng: user.position.longitude }}
         />
       ))}
