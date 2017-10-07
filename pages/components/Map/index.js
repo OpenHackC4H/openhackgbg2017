@@ -39,15 +39,14 @@ const Map = compose(
 class MapComponent extends React.PureComponent {
 
   handleMarkerClick(marker) {
-    console.log(marker)
     const { onSelectCity } = this.props
     let lat, lng
-    if (marker.center) {
+    if (marker.center_) {
       lat = marker.center_.lat()
       lng = marker.center_.lng()
-    } else {
-      lat = marker.lat()
-      lng = marker.lng()
+    } else if (marker.latLng){
+      lat = marker.latLng.lat()
+      lng = marker.latLng.lng()
     }
 
     return fetch('http://localhost:4000/reverse-geocode', {

@@ -65,7 +65,9 @@ export default class Index extends React.Component {
           />
         </div>
         <div style={styles.mapContainer}>
-          <Map users={filteredUsers ? filteredUsers : []}>
+          <Map
+            onSelectCity={this.onSelectCity.bind(this)}
+            users={filteredUsers ? filteredUsers : []}>
           </Map>
         </div>
         <style jsx global>{`
