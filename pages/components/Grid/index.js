@@ -22,14 +22,12 @@ const styles = theme => ({
 });
 
 function Grid(props) {
-  const { classes, users } = props;
+  const { classes, users, city } = props;
 
   return (
     <div className={classes.container}>
       <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <Subheader>{props.city}</Subheader>
-        </GridListTile>
+        
         {users.map((user, i) => <User key={`User_${i}`}{...user} />)}
       </GridList>
     </div>

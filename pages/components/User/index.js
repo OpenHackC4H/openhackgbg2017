@@ -51,7 +51,6 @@ class User extends React.Component {
   render() {
     const classes = this.props.classes
 
-
     return (
       <div className={classes.root}>
         <Card className={classes.card}>
@@ -66,7 +65,7 @@ class User extends React.Component {
           />
           <CardMedia
             className={classes.media}
-            image="http://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/03/main/shrimp-paella-1705p55.jpg?itok=KpoZxRRP"
+            image=""
             title="Contemplative Reptile"
           />
           <CardContent>

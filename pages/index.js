@@ -22,8 +22,11 @@ export default class Index extends React.Component {
   }
 
   onSelectCity(city) {
-    const { users } = this.props
     console.log('onSelectCity', city)
+    if (city === null) {
+      this.setState({ selectedUsers: [] })
+    }
+    const { users } = this.props
 
     this.setState({
       selectedUsers: users.filter(user => {

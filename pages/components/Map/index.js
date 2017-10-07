@@ -21,6 +21,7 @@ const Map = compose(
     defaultOptions={{ styles: mapStyle }}>
     <MarkerClusterer
       onClick={props.handleMarkerClick}
+      maxZoom={5}
       averageCenter
       enableRetinaIcons
       gridSize={60}>
