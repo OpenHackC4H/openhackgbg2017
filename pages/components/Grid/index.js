@@ -34,7 +34,7 @@ function Grid(props) {
             </Subheader>
           : null}
         </GridListTile>
-        {users.map((user, i) => <User key={`User_${i}`} {...user} />)}
+        {users && users.map((user, i) => <User key={`User_${i}`} {...user} />)}
       </GridList>
     </div>
   );

@@ -16,6 +16,7 @@ export default class Index extends React.Component {
   }
 
   static async getInitialProps () {
+    console.log('getInitialProps')
     const response = await fetch('http://localhost:4000/users')
     const json = await response.json()
 
@@ -39,6 +40,8 @@ export default class Index extends React.Component {
   onSearch(event) {
     const { users } = this.props
     const value = event.target.value
+    console.log('text', event.target.value)
+    console.log(users, this.state.filteredUsers)
     this.setState({
       filteredUsers: users.filter(user => {
         return user.title.indexOf(value) !== -1
@@ -62,9 +65,7 @@ export default class Index extends React.Component {
           />
         </div>
         <div style={styles.mapContainer}>
-          <Map
-            onSelectCity={this.onSelectCity.bind(this)}
-            users={filteredUsers ? filteredUsers : []}>
+          <Map users={filteredUsers ? filteredUsers : []}>
           </Map>
         </div>
         <style jsx global>{`
