@@ -45,7 +45,6 @@ export default class FormDialog extends React.Component {
       mode: 'cors',
     })
     .then(response => {
-      console.log(response)
       this.handleRequestClose()
     })
   }
@@ -54,7 +53,7 @@ export default class FormDialog extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Open form dialog</Button>
+        <Button onClick={this.handleClickOpen}>Register</Button>
         <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
           <DialogTitle>{'Subscribe'}</DialogTitle>
           <DialogContent>

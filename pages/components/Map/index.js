@@ -27,6 +27,7 @@ const Map = compose(
       gridSize={60}>
       {props.users.map(user => (
         <Marker
+          onClick={props.handleMarkerClick}
           key={user._id}
           position={{ lat: user.position.latitude, lng: user.position.longitude }}
         />
@@ -37,8 +38,17 @@ const Map = compose(
 
 class MapComponent extends React.PureComponent {
 
-  handleMarkerClick(cluster) {
+  handleMarkerClick(marker) {
+    console.log(marker)
     const { onSelectCity } = this.props
+    let lat, lng
+    if (marker.center) {
+      lat = marker.center_.lat()
+      lng = marker.center_.lng()
+    } else {
+      lat = marker.lat()
+      lng = marker.lng()
+    }
 
     return fetch('http://localhost:4000/reverse-geocode', {
       method: 'POST',
@@ -47,8 +57,8 @@ class MapComponent extends React.PureComponent {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        lat: cluster.center_.lat(),
-        lng: cluster.center_.lng()
+        lat,
+        lng
       }),
       mode: 'cors',
     })

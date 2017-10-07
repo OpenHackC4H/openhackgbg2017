@@ -10,7 +10,8 @@ export default class Index extends React.Component {
     super(props)
     this.state = {
       filteredUsers: props.users,
-      selectedUsers: []
+      selectedUsers: [props.users[0], props.users[1], props.users[2], props.users[3]],
+      city: 'Stockholm'
     }
   }
 
@@ -22,16 +23,16 @@ export default class Index extends React.Component {
   }
 
   onSelectCity(city) {
-    console.log('onSelectCity', city)
-    if (city === null) {
-      this.setState({ selectedUsers: [] })
+    if (!city) {
+      this.setState({ selectedUsers: [], city })
     }
     const { users } = this.props
 
     this.setState({
       selectedUsers: users.filter(user => {
         return user.city.toLowerCase() === city.toLowerCase()
-      })
+      }),
+      city
     })
   }
 
@@ -47,13 +48,15 @@ export default class Index extends React.Component {
 
   render () {
     const { users } = this.props
-    const { selectedUsers, filteredUsers } = this.state
+    const { selectedUsers, filteredUsers, city } = this.state
     console.log(users.length, filteredUsers.length, selectedUsers.length)
 
     return (
       <div>
         <div style={styles.pageContainer}>
           <Start
+            city={city}
+            onSelectCity={this.onSelectCity.bind(this)}
             onSearch={this.onSearch.bind(this)}
             selectedUsers={selectedUsers}
           />
@@ -65,6 +68,7 @@ export default class Index extends React.Component {
           </Map>
         </div>
         <style jsx global>{`
+          @import url('https://fonts.googleapis.com/css?family=Lato');
           * { box-sizing: border-box; margin: 0; padding: 0 }
         `}</style>
       </div>
@@ -74,6 +78,7 @@ export default class Index extends React.Component {
 
 const styles = {
   pageContainer: {
+    pointerEvents: 'auto'
   },
   mapContainer: {
     position: 'absolute',

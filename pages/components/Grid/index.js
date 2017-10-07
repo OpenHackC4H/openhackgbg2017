@@ -22,13 +22,19 @@ const styles = theme => ({
 });
 
 function Grid(props) {
-  const { classes, users, city } = props;
+  const { classes, users, city, onSelectCity } = props;
 
   return (
     <div className={classes.container}>
       <GridList cellHeight={180} className={classes.gridList}>
-        
-        {users.map((user, i) => <User key={`User_${i}`}{...user} />)}
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          {users && users.length ?
+            <Subheader onClick={onSelectCity.bind(this, null)}>
+              {city}
+            </Subheader>
+          : null}
+        </GridListTile>
+        {users.map((user, i) => <User key={`User_${i}`} {...user} />)}
       </GridList>
     </div>
   );
