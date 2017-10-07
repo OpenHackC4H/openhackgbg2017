@@ -35,8 +35,8 @@ export default class Start extends React.Component {
 
 const styles = {
   logo: {
-    width: '200px',
-    height: '200px',
+    width: '125px',
+    height: '125px',
   },
   title: {
     marginTop: '0',
