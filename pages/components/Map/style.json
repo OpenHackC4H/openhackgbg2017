@@ -1,73 +1,19 @@
 [
     {
         "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
         "elementType": "labels.text.fill",
         "stylers": [
             {
                 "color": "#444444"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.country",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.country",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.province",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.province",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.locality",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.neighborhood",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.land_parcel",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
             }
         ]
     },
@@ -77,6 +23,9 @@
         "stylers": [
             {
                 "color": "#f2f2f2"
+            },
+            {
+                "visibility": "on"
             }
         ]
     },
@@ -100,18 +49,6 @@
                 "lightness": 45
             },
             {
-                "color": "#283593"
-            },
-            {
-                "weight": "0.15"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
                 "visibility": "off"
             }
         ]
@@ -121,7 +58,7 @@
         "elementType": "all",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "simplified"
             }
         ]
     },
@@ -148,16 +85,10 @@
         "elementType": "all",
         "stylers": [
             {
-                "color": "#283593"
+                "color": "#ffffff"
             },
             {
                 "visibility": "on"
-            },
-            {
-                "lightness": "7"
-            },
-            {
-                "saturation": "-21"
             }
         ]
     }

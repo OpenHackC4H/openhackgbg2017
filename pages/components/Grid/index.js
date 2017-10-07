@@ -30,7 +30,7 @@ function Grid(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <Subheader>{props.city}</Subheader>
         </GridListTile>
-        {users.map(user => <User {...user} />)}
+        {users.map((user, i) => <User key={`User_${i}`}{...user} />)}
       </GridList>
     </div>
   );
