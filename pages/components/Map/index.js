@@ -1,6 +1,7 @@
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import mapStyle from "./style.json"
+import fetch from 'isomorphic-unfetch'
 
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer"
 
@@ -35,8 +36,23 @@ const Map = compose(
 
 class MapComponent extends React.PureComponent {
 
-  handleMarkerClick(event) {
-    console.log(event)
+  handleMarkerClick(cluster) {
+    return fetch('http://localhost:4000/reverse-geocode', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        lat: cluster.center_.lat(),
+        lng: cluster.center_.lng()
+      }),
+      mode: 'cors',
+    })
+    .then(response => response.json())
+    .then(json => {
+      return json.city
+    })
   }
 
   render() {
