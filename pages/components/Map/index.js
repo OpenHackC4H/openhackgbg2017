@@ -16,7 +16,7 @@ const Map = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={2}
+    defaultZoom={3}
     defaultCenter={{ lat: 0, lng: 0 }}
     defaultOptions={{ styles: mapStyle }}>
     <MarkerClusterer

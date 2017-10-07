@@ -48,6 +48,10 @@ export default class Index extends React.Component {
     })
   }
 
+  onRegister(user) {
+
+  }
+
   render () {
     const { users } = this.props
     const { selectedUsers, filteredUsers, city } = this.state
@@ -59,6 +63,7 @@ export default class Index extends React.Component {
             city={city}
             onSelectCity={this.onSelectCity.bind(this)}
             onSearch={this.onSearch.bind(this)}
+            onRegister={this.onRegister.bind(this)}
             selectedUsers={selectedUsers}
           />
         </div>

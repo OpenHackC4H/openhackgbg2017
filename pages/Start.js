@@ -4,7 +4,13 @@ import Grid from './components/Grid'
 
 export default class Start extends React.Component {
   render () {
-    const { onSearch, selectedUsers, city, onSelectCity } = this.props
+    const {
+      onSearch,
+      selectedUsers,
+      city,
+      onSelectCity,
+      onRegister
+    } = this.props
     const rootStyle = {
       ...styles.root,
       marginTop: city ? '10px' : '200px'
@@ -26,7 +32,7 @@ export default class Start extends React.Component {
           users={selectedUsers}
           city={city} />
         {selectedUsers && selectedUsers.length ?
-          <Register />
+          <Register onRegister={onRegister} />
         : null}
       </div>
     )

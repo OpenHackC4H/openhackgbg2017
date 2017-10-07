@@ -33,6 +33,7 @@ export default class FormDialog extends React.Component {
   }
 
   addUser = () => {
+    const { onRegister } = this.props
     const { user } = this.state
     fetch('http://localhost:4000/users', {
       method: 'POST',
@@ -43,8 +44,10 @@ export default class FormDialog extends React.Component {
       body: JSON.stringify(user),
       mode: 'cors',
     })
-    .then(response => {
+    .then(response => response.json())
+    .then(json => {
       this.handleRequestClose()
+      onRegister(json.user)
     })
   }
 
@@ -55,11 +58,10 @@ export default class FormDialog extends React.Component {
       <div style={styles.registerButton}>
         <Button onClick={this.handleClickOpen}>Register</Button>
         <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
-          <DialogTitle>{'Subscribe'}</DialogTitle>
+          <DialogTitle>{'Register'}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occationally.
+              To Register to this website, please fill in your information here.
             </DialogContentText>
             <TextField
               autoFocus
@@ -82,11 +84,29 @@ export default class FormDialog extends React.Component {
             <TextField
               autoFocus
               margin="dense"
+              id="title"
+              label="title"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "title")}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
               id="city"
               label="city"
               type="text"
               fullWidth
               onChange={this.onTextFieldChange.bind(this, "city")}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="interestedIn"
+              label="interestedIn"
+              type="text"
+              fullWidth
+              onChange={this.onTextFieldChange.bind(this, "interestedIn")}
             />
             <MultipleSelect
               autoFocus
@@ -98,9 +118,9 @@ export default class FormDialog extends React.Component {
               onChange={this.onTextFieldChange.bind(this, 'seniority')}
               selectedValue={user.seniority ? user.seniority : ''}
               values={[
-                "0 to 1 year",
+                "Less than 1 year",
                 "2 to 5 years",
-                "more than 5 years"
+                "More than 5 years"
               ]}
             />
             <MultipleSelect
@@ -114,9 +134,9 @@ export default class FormDialog extends React.Component {
               selectedValue={user.companySize ? user.companySize : ''}
               values={[
                 "Less than 5 people",
-                "5 to 50 peoples",
-                "50 to 500 peoples",
-                "more than 500 peoples"
+                "5 to 50 people",
+                "50 to 500 people",
+                "More than 500 people"
               ]}
             />
             <TextField

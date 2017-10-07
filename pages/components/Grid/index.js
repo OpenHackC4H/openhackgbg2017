@@ -5,6 +5,7 @@ import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui-icons/Info';
+import Typography from 'material-ui/Typography';
 
 import User from '../User'
 
@@ -14,11 +15,11 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'scroll',
+    overflow: 'scroll'
   },
   gridList: {
-    width: '90%',
-    height: 600,
+    width: '100%',
+    height: 600
   },
 });
 
@@ -26,21 +27,22 @@ function Grid(props) {
   const { classes, users, city, onSelectCity } = props;
 
   const gridListStyle = {
-    width: city ? '90%' : 0,
-    height: city ? 600 : 0
+    width: city ? '80%' : 0,
+    maxWidth: 1450,
+    height: city ? 750 : 0
   }
 
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} fade`}>
       <GridList cellHeight={180} style={gridListStyle}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           {users && users.length ?
-            <Subheader onClick={onSelectCity.bind(this, null)}>
+            <Typography type="title" className={classes.title} onClick={onSelectCity.bind(this, null)}>
               {city}
-            </Subheader>
+            </Typography>
           : null}
         </GridListTile>
-        {users && users.map((user, i) => <User key={`User_${i}`} {...user} keywords={['Creative', 'Flex', 'Open office']}/>)}
+        {users && users.map((user, i) => <User key={`User_${i}`} {...user} />)}
       </GridList>
     </div>
   );

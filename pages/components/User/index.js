@@ -18,10 +18,11 @@ import Chip from 'material-ui/Chip'
 const styles = theme => ({
   root: {
     alignSelf: 'center',
-    padding: '10px',
+    padding: '15px',
   },
   card: {
-    maxWidth: 300,
+    width: 300,
+    minHeight: 475
   },
   media: {
     height: 194,
@@ -46,7 +47,7 @@ const styles = theme => ({
   },
   chipWrapper: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'wrap',
     flexWrap: 'wrap',
   },
 })
@@ -71,7 +72,7 @@ class User extends React.Component {
               </Avatar>
             }
             title={this.props.title}
-            subheader={this.props.city}
+            subheader={this.props.seniority}
           />
           <CardMedia
             className={classes.media}
@@ -80,7 +81,9 @@ class User extends React.Component {
           />
           <CardContent>
             <Typography component="p">
-              This impressive paella is a perfect party dish and a fun meal to cook together with
+              <strong>Company size:</strong> {this.props.companySize}
+              <br />
+              <strong>Interested in:</strong> {this.props.interestedIn.join(', ')}
             </Typography>
             <div className={classes.chipWrapper}>
               {this.props.keywords.map(keyword =>
