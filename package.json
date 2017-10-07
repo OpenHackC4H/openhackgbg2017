@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "server": "node lib/index",
-    "dev-server": "nodemon lib/index"
+    "dev-server": "nodemon lib/index",
+    "env": "create-next env"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/sebastianandreasson/openhackgbg2017#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.1",
     "flickrapi": "^0.6.0",
     "google-images": "^2.1.0",
@@ -36,5 +38,8 @@
     "react-dom": "^15.6.2",
     "react-google-maps": "^8.3.5",
     "recompose": "^0.26.0"
+  },
+  "devDependencies": {
+    "create-next": "^0.1.4"
   }
 }
