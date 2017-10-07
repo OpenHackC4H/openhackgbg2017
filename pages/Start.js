@@ -1,4 +1,5 @@
 import TextField from 'material-ui/TextField'
+import FormDialog from './components/Register'
 
 export default class Start extends React.Component {
   render () {
@@ -14,6 +15,7 @@ export default class Start extends React.Component {
           type="search"
           margin="normal"
         />
+        <FormDialog />
       </div>
     )
   }

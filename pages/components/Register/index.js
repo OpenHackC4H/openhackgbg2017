@@ -11,6 +11,9 @@ import Dialog, {
 export default class FormDialog extends React.Component {
   state = {
     open: false,
+    user: {
+
+    }
   };
 
   handleClickOpen = () => {
@@ -36,7 +39,23 @@ export default class FormDialog extends React.Component {
               autoFocus
               margin="dense"
               id="name"
-              label="Email Address"
+              label="username"
+              type="email"
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="password"
+              type="email"
+              fullWidth
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="city"
               type="email"
               fullWidth
             />
@@ -46,7 +65,7 @@ export default class FormDialog extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.handleRequestClose} color="primary">
-              Subscribe
+              Register
             </Button>
           </DialogActions>
         </Dialog>
