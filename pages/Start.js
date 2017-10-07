@@ -2,11 +2,14 @@ import TextField from 'material-ui/TextField'
 
 export default class Start extends React.Component {
   render () {
+    const { onSearch } = this.props
     return (
       <div style={styles.root}>
         <h1>AirB2B</h1>
+        <h2>Connecting people</h2>
         <TextField
           id="search"
+          onChange={onSearch.bind(this)}
           label="Search field"
           type="search"
           margin="normal"

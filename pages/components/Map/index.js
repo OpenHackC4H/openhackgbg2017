@@ -19,17 +19,29 @@ const Map = compose(
     defaultCenter={{ lat: 0, lng: 0 }}
     defaultOptions={{ styles: mapStyle }}>
     <MarkerClusterer
+      onClick={props.handleMarkerClick.bind(this)}
       averageCenter
       enableRetinaIcons
       gridSize={60}>
-      {props.markers.map(marker => (
+      {props.users.map(user => (
         <Marker
-          key={marker._id}
-          position={{ lat: marker.position.latitude, lng: marker.position.longitude }}
+          key={user._id}
+          position={{ lat: user.position.latitude, lng: user.position.longitude }}
         />
       ))}
     </MarkerClusterer>
   </GoogleMap>
 )
 
-export default Map
+class MapComponent extends React.PureComponent {
+
+  handleMarkerClick(event) {
+    console.log(event)
+  }
+
+  render() {
+    return <Map {...this.props} handleMarkerClick={this.handleMarkerClick} />
+  }
+}
+
+export default MapComponent

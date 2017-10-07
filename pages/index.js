@@ -6,6 +6,13 @@ import Button from 'material-ui/Button'
 import Map from './components/Map'
 
 export default class Index extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      filteredUsers: props.users
+    }
+  }
+
   static async getInitialProps () {
     console.log('getInitialProps')
     const response = await fetch('http://localhost:4000/users')
@@ -15,16 +22,30 @@ export default class Index extends React.Component {
     return { users: json.data }
   }
 
+  onSearch(event) {
+    const { users } = this.props
+    const value = event.target.value
+    console.log('text', event.target.value)
+    console.log(users, this.state.filteredUsers)
+    this.setState({
+      filteredUsers: users.filter(user => {
+        return user.title.indexOf(value) !== -1
+      })
+    })
+  }
+
   render () {
     const { users } = this.props
+    const { filteredUsers } = this.state
+    console.log(users.length, filteredUsers.length)
 
     return (
       <div>
         <div style={styles.pageContainer}>
-          <Start />
+          <Start onSearch={this.onSearch.bind(this)} />
         </div>
         <div style={styles.mapContainer}>
-          <Map markers={users ? users : []}>
+          <Map users={filteredUsers ? filteredUsers : []}>
           </Map>
         </div>
         <style jsx global>{`
