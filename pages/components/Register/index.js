@@ -52,7 +52,7 @@ export default class FormDialog extends React.Component {
     const { user } = this.state
 
     return (
-      <div>
+      <div style={styles.registerButton}>
         <Button onClick={this.handleClickOpen}>Register</Button>
         <Dialog open={this.state.open} onRequestClose={this.handleRequestClose}>
           <DialogTitle>{'Subscribe'}</DialogTitle>
@@ -162,5 +162,13 @@ export default class FormDialog extends React.Component {
         </Dialog>
       </div>
     );
+  }
+}
+
+const styles = {
+  registerButton: {
+    position: 'absolute',
+    top: '45px',
+    left: '5px'
   }
 }
