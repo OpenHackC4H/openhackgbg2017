@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
-    "server": "node lib/index"
+    "server": "node lib/index",
+    "dev-server": "nodemon lib/index"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "mongoose": "^4.12.0",
     "next": "^3.2.2",
     "node-geocoder": "^3.21.0",
+    "nodemon": "^1.12.1",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-google-maps": "^8.3.5",
