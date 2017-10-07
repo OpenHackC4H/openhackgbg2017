@@ -13,20 +13,26 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    overflow: 'hidden'
+    alignItems: 'center',
+    overflow: 'scroll',
   },
   gridList: {
     width: '90%',
-    height: 450,
+    height: 600,
   },
 });
 
 function Grid(props) {
   const { classes, users, city, onSelectCity } = props;
 
+  const gridListStyle = {
+    width: city ? '90%' : 0,
+    height: city ? 600 : 0
+  }
+
   return (
     <div className={classes.container}>
-      <GridList cellHeight={180} className={classes.gridList}>
+      <GridList cellHeight={180} style={gridListStyle}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           {users && users.length ?
             <Subheader onClick={onSelectCity.bind(this, null)}>

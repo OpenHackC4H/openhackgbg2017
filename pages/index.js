@@ -16,7 +16,6 @@ export default class Index extends React.Component {
   }
 
   static async getInitialProps () {
-    console.log('getInitialProps')
     const response = await fetch('http://localhost:4000/users')
     const json = await response.json()
 
@@ -27,32 +26,38 @@ export default class Index extends React.Component {
     if (!city) {
       this.setState({ selectedUsers: [], city })
     }
-    const { users } = this.props
+    const { users } = this.state
+    const selectedUsers = users.filter(user => {
+      return user.city.toLowerCase() === city.toLowerCase()
+    })
 
     this.setState({
-      selectedUsers: users.filter(user => {
-        return user.city.toLowerCase() === city.toLowerCase()
-      }),
-      city
+      selectedUsers,
+      city: selectedUsers.length ? city : null
     })
   }
 
   onSearch(event) {
     const { users } = this.props
+    const { city } = this.state
     const value = event.target.value
-    console.log('text', event.target.value)
-    console.log(users, this.state.filteredUsers)
     this.setState({
       filteredUsers: users.filter(user => {
         return user.title.indexOf(value) !== -1
-      })
+      }),
+      selectedUsers: users
+        .filter(user => {
+          return user.city.toLowerCase() === city.toLowerCase()
+        })
+        .filter(user => {
+          return user.title.indexOf(value) !== -1
+        })
     })
   }
 
   render () {
     const { users } = this.props
     const { selectedUsers, filteredUsers, city } = this.state
-    console.log(users.length, filteredUsers.length, selectedUsers.length)
 
     return (
       <div>
