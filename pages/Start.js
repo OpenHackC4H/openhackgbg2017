@@ -1,13 +1,13 @@
 import TextField from 'material-ui/TextField'
 import FormDialog from './components/Register'
+import Grid from './components/Grid'
 
 export default class Start extends React.Component {
   render () {
-    const { onSearch } = this.props
+    const { onSearch, selectedUsers } = this.props
     return (
       <div style={styles.root}>
-        <h1>AirB2B</h1>
-        <h2>Connecting people</h2>
+        <h1 style={styles.title}>AirB2B</h1>
         <TextField
           id="search"
           onChange={onSearch.bind(this)}
@@ -15,7 +15,7 @@ export default class Start extends React.Component {
           type="search"
           margin="normal"
         />
-        <FormDialog />
+        <Grid users={selectedUsers} />
       </div>
     )
   }

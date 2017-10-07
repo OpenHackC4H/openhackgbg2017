@@ -20,7 +20,7 @@ const Map = compose(
     defaultCenter={{ lat: 0, lng: 0 }}
     defaultOptions={{ styles: mapStyle }}>
     <MarkerClusterer
-      onClick={props.handleMarkerClick.bind(this)}
+      onClick={props.handleMarkerClick}
       averageCenter
       enableRetinaIcons
       gridSize={60}>
@@ -37,6 +37,8 @@ const Map = compose(
 class MapComponent extends React.PureComponent {
 
   handleMarkerClick(cluster) {
+    const { onSelectCity } = this.props
+
     return fetch('http://localhost:4000/reverse-geocode', {
       method: 'POST',
       headers: {
@@ -51,12 +53,12 @@ class MapComponent extends React.PureComponent {
     })
     .then(response => response.json())
     .then(json => {
-      return json.city
+      onSelectCity(json.city)
     })
   }
 
   render() {
-    return <Map {...this.props} handleMarkerClick={this.handleMarkerClick} />
+    return <Map {...this.props} handleMarkerClick={this.handleMarkerClick.bind(this)} />
   }
 }
 

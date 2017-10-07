@@ -9,24 +9,32 @@ export default class Index extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      filteredUsers: props.users
+      filteredUsers: props.users,
+      selectedUsers: []
     }
   }
 
   static async getInitialProps () {
-    console.log('getInitialProps')
     const response = await fetch('http://localhost:4000/users')
     const json = await response.json()
-    console.log('json', json)
 
     return { users: json.data }
+  }
+
+  onSelectCity(city) {
+    const { users } = this.props
+    console.log('onSelectCity', city)
+
+    this.setState({
+      selectedUsers: users.filter(user => {
+        return user.city.toLowerCase() === city.toLowerCase()
+      })
+    })
   }
 
   onSearch(event) {
     const { users } = this.props
     const value = event.target.value
-    console.log('text', event.target.value)
-    console.log(users, this.state.filteredUsers)
     this.setState({
       filteredUsers: users.filter(user => {
         return user.title.indexOf(value) !== -1
@@ -36,16 +44,21 @@ export default class Index extends React.Component {
 
   render () {
     const { users } = this.props
-    const { filteredUsers } = this.state
-    console.log(users.length, filteredUsers.length)
+    const { selectedUsers, filteredUsers } = this.state
+    console.log(users.length, filteredUsers.length, selectedUsers.length)
 
     return (
       <div>
         <div style={styles.pageContainer}>
-          <Start onSearch={this.onSearch.bind(this)} />
+          <Start
+            onSearch={this.onSearch.bind(this)}
+            selectedUsers={selectedUsers}
+          />
         </div>
         <div style={styles.mapContainer}>
-          <Map users={filteredUsers ? filteredUsers : []}>
+          <Map
+            onSelectCity={this.onSelectCity.bind(this)}
+            users={filteredUsers ? filteredUsers : []}>
           </Map>
         </div>
         <style jsx global>{`
