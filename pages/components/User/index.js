@@ -67,7 +67,7 @@ class User extends React.Component {
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                {this.props.title[0]}
+                {this.props.title && this.props.title[0]}
               </Avatar>
             }
             title={this.props.title}
@@ -75,7 +75,7 @@ class User extends React.Component {
           />
           <CardMedia
             className={classes.media}
-            image=""
+            image={this.props.imageURL}
             title="Contemplative Reptile"
           />
           <CardContent>
