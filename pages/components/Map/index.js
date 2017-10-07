@@ -24,11 +24,16 @@ const Map = compose(
       maxZoom={5}
       averageCenter
       enableRetinaIcons
+      defaultImagePath="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png"
+      imagePath="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png"
       gridSize={60}>
       {props.users.map(user => (
         <Marker
           onClick={props.handleMarkerClick}
           key={user._id}
+          icon={{
+            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2000px-Google_%22G%22_Logo.svg.png"
+          }}
           position={{ lat: user.position.latitude, lng: user.position.longitude }}
         />
       ))}

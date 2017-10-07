@@ -13,7 +13,7 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
-  },
+  }
 })
 
 class SimpleSelect extends React.Component {
