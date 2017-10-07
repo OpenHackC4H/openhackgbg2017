@@ -22,7 +22,6 @@ export default class Start extends React.Component {
         {selectedUsers && selectedUsers.length ?
           <Register />
         : null}
-        <Register />
       </div>
     )
   }
