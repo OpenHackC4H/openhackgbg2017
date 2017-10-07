@@ -50,7 +50,7 @@ export default class FormDialog extends React.Component {
 
   render() {
     const { user } = this.state
-    console.log(this.state.user)
+
     return (
       <div>
         <Button onClick={this.handleClickOpen}>Register</Button>
@@ -88,20 +88,11 @@ export default class FormDialog extends React.Component {
               fullWidth
               onChange={this.onTextFieldChange.bind(this, "city")}
             />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="seniority"
-              label="seniority"
-              type="text"
-              fullWidth
-              onChange={this.onTextFieldChange.bind(this, "seniority")}
-            />
             <MultipleSelect
               autoFocus
               margin="dense"
               id="seniority"
-              label="seniority"
+              label="Seniority"
               type="text"
               fullWidth
               onChange={this.onTextFieldChange.bind(this, 'seniority')}
@@ -116,17 +107,17 @@ export default class FormDialog extends React.Component {
               autoFocus
               margin="dense"
               id="companySize"
-              label="companySize"
+              label="Company size"
               type="text"
               fullWidth
+              onChange={this.onTextFieldChange.bind(this, 'companySize')}
+              selectedValue={user.companySize ? user.companySize : ''}
               values={[
                 "Less than 5 people",
                 "5 to 50 peoples",
                 "50 to 500 peoples",
                 "more than 500 peoples"
               ]}
-              onChange={this.onTextFieldChange.bind(this, 'companySize')}
-              selectedValue={user.seniority ? user.seniority : ''}
             />
             <TextField
               autoFocus

@@ -27,13 +27,12 @@ class SimpleSelect extends React.Component {
   }
 
   render() {
-    const { selectedValue, values, classes, onChange } = this.props
-    const menuItems = values.map(this.renderMenuItem)
+    const { selectedValue, values, classes, label, onChange } = this.props
 
     return (
       <form className={classes.container} autoComplete="off">
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="age-simple">Age</InputLabel>
+          <InputLabel htmlFor="age-simple">{label}</InputLabel>
           <Select
             value={selectedValue}
             onChange={onChange}
@@ -41,7 +40,7 @@ class SimpleSelect extends React.Component {
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            {menuItems}
+            {values.map(this.renderMenuItem)}
           </Select>
         </FormControl>
 
