@@ -62,7 +62,7 @@ export default class Index extends React.Component {
             matching: false,
             selectedUsers: json.matches
           })
-        }, 2500)
+        }, 4000)
       })
   }
 
