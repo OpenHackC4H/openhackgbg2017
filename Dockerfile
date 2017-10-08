@@ -18,6 +18,7 @@ COPY ./next.config.js /app/
 
 ENTRYPOINT ["dumb-init"]
 
+EXPOSE 4000
 EXPOSE 80
 
 CMD npm run server
